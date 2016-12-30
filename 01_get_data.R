@@ -43,4 +43,4 @@ get_dalyight_data <- function(city = "kyiv", year = 2016) {
 
 df <- get_dalyight_data(city = "kyiv", year = 2016)
 
-#write.csv(df, "~/R/daylight/data/kyiv.csv", row.names = F)
+write.csv(df, "~/R/daylight/data/kyiv.csv", row.names = F)
