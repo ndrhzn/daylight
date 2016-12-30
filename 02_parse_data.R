@@ -34,3 +34,5 @@ parse_data <- function(df) {
 }
 
 df <- parse_data(read_data())
+
+

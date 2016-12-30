@@ -7,8 +7,7 @@ df <- parse_data(df)
 
 ggplot(df)+
   geom_linerange(aes(date, ymin = start, ymax = end,
-                     color = end - start),
-                 alpha = 0.9, size = 1.5)+
+                     color = end - start), size = 1.5)+
   geom_text(data = df[df$date == min(df$date),],
                   aes(x = date, y = start, label = "початок світлового дня",
                       family = "Ubuntu Condensed", label.size = 10, fontface = "plain"),
@@ -25,18 +24,18 @@ ggplot(df)+
             aes(x = date, y = end, label = "перехід на зимовий час",
                 family = "Ubuntu Condensed", label.size = 10, fontface = "plain"),
             hjust = 0, vjust = -4.5, colour = "#5D646F")+
-  scale_color_viridis(begin = 0.2, end = 0.8)+
+  scale_color_viridis(begin = 0.4, end = 0.8, alpha = 0.1)+
   scale_x_date(name = NULL, breaks = as.Date(c("2016-03-01",
                                                "2016-06-01", "2016-09-01",
                                                "2016-12-01")), 
                date_labels = "%B", minor_breaks = NULL)+
-  scale_y_datetime(date_breaks = "2 hours", date_labels = "%H",
+  scale_y_reverse(date_breaks = "2 hours", date_labels = "%H",
                    minor_breaks = NULL)+
   guides(color = guide_colorbar(title = "Тривалість світлового дня, годин", 
                                 title.position = "top"))+
   labs(title = "Тривалість світлового дня у Києві",
-       subtitle = "\nНайкоротший світловий день у 2016 році тривав 8 годин, а найдовший - 16 годин 45 хвилин",
-       caption = "\nДані: timeanddate.com")+
+       subtitle = "\nНайкоротший світловий день триває 8 годин, а найдовший - 16 годин 26 хвилин",
+       caption = "\nДані: timeanddate.com Візуалізація: textura.in.ua")+
   theme_minimal(base_family = "Ubuntu Condensed")+
   theme(text = element_text(family = "Ubuntu Condensed", color = "#3A3F4A"),
         legend.position = "top",

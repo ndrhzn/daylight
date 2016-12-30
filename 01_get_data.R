@@ -1,6 +1,4 @@
 library(rvest)
-library(stringr)
-library(ggplot2)
 
 #cities = c("kyiv", "lviv", "odesa", "kharkiv", "dnipro")
 
@@ -27,7 +25,11 @@ get_dalyight_data <- function(city = "kyiv", year = 2016) {
       html_nodes('td:nth-child(3)') %>% 
       html_text()
     
-    df <- data.frame(year = year, month = i, day, start, end, city)
+    length <- page %>% 
+      html_nodes('td.tr.sep-l') %>% 
+      html_text()
+    
+    df <- data.frame(year = year, month = i, day, start, end, length, city)
     
     data <- rbind.data.frame(data, df)
     
@@ -39,6 +41,6 @@ get_dalyight_data <- function(city = "kyiv", year = 2016) {
   
 }
 
-df <- get_dalyight_data(city = "kyiv")
+df <- get_dalyight_data(city = "kyiv", year = 2016)
 
-write.csv(df, "~/R/daylight/data/kyiv.csv", row.names = F)
+#write.csv(df, "~/R/daylight/data/kyiv.csv", row.names = F)
