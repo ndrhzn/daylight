@@ -1,8 +1,10 @@
 library(rvest)
 
-#cities = c("kyiv", "lviv", "odesa", "kharkiv", "dnipro")
+# cities = c('kyiv', 'lviv', 'kharkiv', 'dnipro', 'odesa', 'simferopol', 'cherkasy',
+# 'kryvyi-rih', 'pavlograd', 'donetsk', 'khmelnytskyi', 'chernobyl', 'luhansk', 
+# 'sumy', 'ternopil', 'uzhgorod', 'zaporizhia', 'alushta', 'yalta', 'sevastopol')
 
-get_dalyight_data <- function(city = "kyiv", year = 2016) {
+get_dalyight_data <- function(city = 'kyiv', year = 2016) {
   
   data <- data.frame(stringsAsFactors = F)
   
@@ -40,7 +42,3 @@ get_dalyight_data <- function(city = "kyiv", year = 2016) {
   return(data)
   
 }
-
-df <- get_dalyight_data(city = "kyiv", year = 2016)
-
-write.csv(df, "~/R/daylight/data/kyiv.csv", row.names = F)

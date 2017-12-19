@@ -2,7 +2,7 @@ library(stringr)
 
 read_data <- function() {
   
-  files <- list.files("~/R/daylight/data", full.names = TRUE)
+  files <- list.files('data', full.names = TRUE)
   
   df <- data.frame(stringsAsFactors = F)
   
@@ -16,18 +16,17 @@ read_data <- function() {
   return(df)
 }
 
-
 parse_data <- function(df) {
   
   df$date <- as.Date(paste(df$year, df$month, df$day, sep = "-"))
   
   df$start <- df$start %>% 
-    str_extract("\\d+?:\\d+") %>% 
-    strptime(format = "%H:%M", tz = "UTC")
+    str_extract('\\d+?:\\d+') %>% 
+    strptime(format = '%H:%M', tz = 'UTC')
   
   df$end <- df$end %>% 
-    str_extract("\\d+?:\\d+") %>% 
-    strptime(format = "%H:%M", tz = "UTC")
+    str_extract('\\d+?:\\d+') %>% 
+    strptime(format = '%H:%M', tz = 'UTC')
   
   return(df)
   
