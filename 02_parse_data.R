@@ -22,11 +22,13 @@ parse_data <- function(df) {
   
   df$start <- df$start %>% 
     str_extract('\\d+?:\\d+') %>% 
-    strptime(format = '%H:%M', tz = 'UTC')
+    strptime(format = '%H:%M', tz = 'UTC') %>% 
+    as.POSIXct()
   
   df$end <- df$end %>% 
     str_extract('\\d+?:\\d+') %>% 
-    strptime(format = '%H:%M', tz = 'UTC')
+    strptime(format = '%H:%M', tz = 'UTC') %>% 
+    as.POSIXct()
   
   return(df)
   
